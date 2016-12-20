@@ -1,0 +1,42 @@
+#!/bin/bash
+
+echo "Please enter your Lynda login username, followed by [ENTER]:"
+read username
+echo "Please enter your Lynda login password, followed by [ENTER]:"
+read password
+echo "Please enter your tutorial link to download, followed by [ENTER]:"
+read dl_link
+
+echo -e '\n\n\n'
+echo "We will try to use account $username for downloading"
+
+echo -e "\n\nTrying to get the URL list\n"
+
+# Declaring URL process function
+process_url (){
+    echo $1| cut -d '/' -f-4
+}
+
+lynx -listonly -dump $dl_link > link_list.txt
+
+echo 'URL cleaning for scrape'
+clean_url=$(process_url $dl_link)
+
+echo $clean_url
+grep $clean_url link_list.txt | cut -c 7- > link_list_clean.txt
+echo 'URL list build complete'
+echo -e '\n\n'
+
+echo '--------------------------------'
+echo 'STARTING DOWNLOAD PROCESS'
+echo '--------------------------------'
+
+while read in
+ do youtube-dl --flat-playlist --username $username --password $password --no-playlist $in
+done < link_list_clean.txt
+
+
+echo -e '\n\n\nDownload complete'
+rm -f link_list.txt link_list_clean.txt
+echo 'Cleared files'
+echo 'Thank you for using Lynda download Bash'
