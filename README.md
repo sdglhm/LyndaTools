@@ -29,13 +29,16 @@ Also you'd need to have lynx browser installed.
 ### To download Lynda course downloader,
 
 1. Download the LyndaDownload script  
-	wget -O lyndaDownload https://raw.githubusercontent.com/sdglhm/LyndaTools/master/LyndaTools-dl
+
+	`wget -O lyndaDownload https://raw.githubusercontent.com/sdglhm/LyndaTools/master/LyndaTools-dl`
     
 2. Give executing permission  
-	chmod +x lyndaDownload
+
+	`chmod +x lyndaDownload`
 
 3. Run Lynda Dowload script  
-	./lyndaDownload 
+
+	`./lyndaDownload `
 
 ---
 You will be asked with your lynda password and username. Provide them to continue. Then Copy lynda course page URL and past when asked. It will fetch URL's and start the download automatically. Open your terminal window to finish the download.
@@ -49,12 +52,12 @@ Usually, Lynda files are named with the format `lesson name -fileorder.mp4` but 
 ### How to use Lynda file Rename
 
 1. Download the Lynda File Renamer  
-	wget -O "lyndaRename" https://raw.githubusercontent.com/sdglhm/LyndaTools/master/LyndaTools-Rename
+	`wget -O "lyndaRename" https://raw.githubusercontent.com/sdglhm/LyndaTools/master/LyndaTools-Rename`
   
 2. Give executing permission  
-	chmod +x lyndaRename
+	`chmod +x lyndaRename`
         
 3. Run Lynda Tool renamer with your folder path  
-	./lyndaRename "~/home/Lynda/Course"
+	`./lyndaRename "~/home/Lynda/Course"`
         
 Enjoy !!!
