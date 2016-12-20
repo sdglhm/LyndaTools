@@ -1,0 +1,17 @@
+#!/bin/bash
+
+primaryDir=$1
+
+for file in "$primaryDir"/*
+
+do
+    fileName=${file##*-}
+    fileExtension=${fileName%".mp4"}
+
+    preparedFileName=${file#"$primaryDir"/}
+    preparedFileName=${preparedFileName%-"$fileExtension".mp4}
+    finalName=$fileExtension-$preparedFileName.mp4
+    echo -e "\n"
+    echo "Renaming: "${file#"$primaryDir"/}" to "$finalName
+    mv "$file" "$primaryDir/$finalName"
+done
