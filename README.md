@@ -52,12 +52,15 @@ Usually, Lynda files are named with the format `lesson name -fileorder.mp4` but 
 ### How to use Lynda file Rename
 
 1. Download the Lynda File Renamer  
+
 	`wget -O "lyndaRename" https://raw.githubusercontent.com/sdglhm/LyndaTools/master/LyndaTools-Rename`
   
 2. Give executing permission  
+
 	`chmod +x lyndaRename`
         
 3. Run Lynda Tool renamer with your folder path  
+
 	`./lyndaRename "~/home/Lynda/Course"`
         
 Enjoy !!!
