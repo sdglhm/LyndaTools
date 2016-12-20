@@ -2,6 +2,10 @@
 
 primaryDir=$1
 
+if [[-n "$primaryDir"]]
+    exit
+fi
+
 for file in "$primaryDir"/*
 
 do
