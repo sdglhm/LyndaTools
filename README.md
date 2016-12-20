@@ -40,3 +40,19 @@ You will be asked with your lynda password and username. Provide them to continu
 # 2.Lynda File Rename
 
 Usually, Lynda files are named with the format `lesson name -fileorder.mp4` but directory listing shows the files in alphabetical order which is kind of annoying. So I've written a small bash script which will rename files by prepending the file order number at the beginning of the file so I could easily click the file or my player can autoplay files at ease.
+
+### How to use Lynda file Rename
+
+1. Download the Lynda File Renamer
+
+		wget -O "lyndaRename" https://raw.githubusercontent.com/sdglhm/LyndaTools/master/LyndaTools-Rename
+  
+2. Give executing permission
+
+		chmod +x lyndaRename
+        
+3. Run Lynda Tool renamer with your folder path
+		
+        lyndaRename "~/home/Lynda/Course"
+        
+Enjoy !!!
