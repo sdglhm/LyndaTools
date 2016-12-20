@@ -28,9 +28,9 @@ Also you'd need to have lynx browser installed.
 
 ### To download Lynda course downloader,
 
-    wget -O lynda_dl.sh https://goo.gl/xqVVWc  
-    chmod +x lynda_dl.sh  
-    ./lynda_dl.sh  
+    wget -O lyndaDownload https://raw.githubusercontent.com/sdglhm/LyndaTools/master/LyndaTools-dl
+    chmod +x lyndaDownload
+    ./lyndaDownload 
 
 ---
 You will be asked with your lynda password and username. Provide them to continue. Then Copy lynda course page URL and past when asked. It will fetch URL's and start the download automatically. Open your terminal window to finish the download.
@@ -53,6 +53,6 @@ Usually, Lynda files are named with the format `lesson name -fileorder.mp4` but 
         
 3. Run Lynda Tool renamer with your folder path
 		
-        lyndaRename "~/home/Lynda/Course"
+        ./lyndaRename "~/home/Lynda/Course"
         
 Enjoy !!!
