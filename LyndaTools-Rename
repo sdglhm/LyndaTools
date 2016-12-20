@@ -2,20 +2,22 @@
 
 primaryDir=$1
 
-if [[-n "$primaryDir"]]
+if [ $# -eq 0 ]
+then
+    echo "$(tput setaf 1) Error : Please specify your directory !"
     exit
+else
+    for file in "$primaryDir"/*
+
+    do
+        fileName=${file##*-}
+        fileExtension=${fileName%".mp4"}
+
+        preparedFileName=${file#"$primaryDir"/}
+        preparedFileName=${preparedFileName%-"$fileExtension".mp4}
+        finalName=$fileExtension-$preparedFileName.mp4
+        echo -e "\n"
+        echo "Renaming: "${file#"$primaryDir"/}" to "$finalName
+        mv "$file" "$primaryDir/$finalName"
+    done
 fi
-
-for file in "$primaryDir"/*
-
-do
-    fileName=${file##*-}
-    fileExtension=${fileName%".mp4"}
-
-    preparedFileName=${file#"$primaryDir"/}
-    preparedFileName=${preparedFileName%-"$fileExtension".mp4}
-    finalName=$fileExtension-$preparedFileName.mp4
-    echo -e "\n"
-    echo "Renaming: "${file#"$primaryDir"/}" to "$finalName
-    mv "$file" "$primaryDir/$finalName"
-done
