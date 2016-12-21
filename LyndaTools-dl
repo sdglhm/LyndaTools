@@ -1,42 +1,58 @@
 #!/bin/bash
 
-echo "Please enter your Lynda login username, followed by [ENTER]:"
-read username
-echo "Please enter your Lynda login password, followed by [ENTER]:"
-read -s password
-echo "Please enter your tutorial link to download, followed by [ENTER]:"
-read dl_link
+# Check if user prefers Cookie mode instead of Auth mode
 
-echo -e '\n\n\n'
-echo "We will try to use account $username for downloading"
+read -p "Would you like to use Cookie mode instead of Username, Password auth? [Y/N]: " -n 1 -r
 
-echo -e "\n\nTrying to get the URL list\n"
+if [[ $REPLY =~ ^[Yy]$ ]];
+then
+    echo
+    read -p "Please enter your Cookie.txt path, followed by [ENTER]: " cookiePath
+else
+    echo
+    read -p "Please enter your Lynda username, followed by [ENTER]: " username
+    echo "Please enter your Lynda password, followed by [ENTER]: "
+    read -s password
+fi
+    echo -e "\n"
+    read -p "Please enter your tutorial link to download, followed by [ENTER]: " dl_link
 
-# Declaring URL process function
-process_url (){
-    echo $1| cut -d '/' -f-4
-}
+    echo -e "\n\nTrying to get the URL list\n"
 
-lynx -listonly -dump $dl_link > link_list.txt
+    # Declaring URL process function
+    process_url (){
+        echo $1| cut -d '/' -f-4
+    }
 
-echo 'URL cleaning for scrape'
-clean_url=$(process_url $dl_link)
+    lynx -listonly -dump $dl_link > link_list.txt
 
-echo $clean_url
-grep $clean_url link_list.txt | cut -c 7- > link_list_clean.txt
-echo 'URL list build complete'
-echo -e '\n\n'
+    echo "Processing Video URL for download."
+    clean_url=$(process_url $dl_link)
 
-echo '--------------------------------'
-echo 'STARTING DOWNLOAD PROCESS'
-echo '--------------------------------'
+    echo $clean_url
+    grep $clean_url link_list.txt | cut -c 7- > link_list_clean.txt
+    echo "URL list build complete."
+    echo "Removing duplicate lines."
+    echo -e '\n\n'
 
-while read in
- do youtube-dl --flat-playlist --username $username --password $password --no-playlist $in
-done < link_list_clean.txt
+    echo "========================================================"
+    echo "                     Download started                   "
+    echo "========================================================"
+
+    while read in
+        if [[ ! -z "$cookiePath" ]];then
+            echo "Downloading $in"
+            youtube-dl --flat-playlist --cookies $cookiePath --no-playlist --newline $in -q
+        else
+            echo "Downloading $in"
+            youtube-dl --flat-playlist --username $username --password $password --no-playlist --newline $in -q
+        fi
+        do echo "Video download completed."
+    done < link_list_clean.txt
 
 
-echo -e '\n\n\nDownload complete'
+echo -e "\n\n\nDownload complete."
+echo 'Removing temporary files...'
 rm -f link_list.txt link_list_clean.txt
-echo 'Cleared files'
-echo 'Thank you for using Lynda download Bash'
+echo "Temporary files removed."
+echo -e "Thank you for using Lynda download Bash\n\n"
