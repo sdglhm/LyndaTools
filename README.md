@@ -25,6 +25,8 @@ Also you'd need to have lynx browser installed.
     yum install lynx -y
     or
     apt-get install lynx
+    or
+    pacman -S lynx
 
 ### To download Lynda course downloader,
 

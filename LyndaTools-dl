@@ -3,7 +3,7 @@
 echo "Please enter your Lynda login username, followed by [ENTER]:"
 read username
 echo "Please enter your Lynda login password, followed by [ENTER]:"
-read password
+read -s password
 echo "Please enter your tutorial link to download, followed by [ENTER]:"
 read dl_link
 
