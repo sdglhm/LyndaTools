@@ -1,7 +1,8 @@
 # LyndaTools
 Few bash scripts to help Lynda users to Download and Manage Lynda contents
 
--
+---
+
 # 1. Lynda downloader
 ## Lynda course downloader bash
 
@@ -21,12 +22,13 @@ If you do not have curl, you can alternatively use a recent wget:
     sudo chmod a+rx /usr/local/bin/youtube-dl
 
 Also you'd need to have lynx browser installed. 
-
+```shell
     yum install lynx -y
     or
     apt-get install lynx
     or
     pacman -S lynx
+```
 
 ### To download Lynda course downloader,
 
@@ -46,7 +48,7 @@ Also you'd need to have lynx browser installed.
 You will be asked with your lynda password and username. Provide them to continue. Then Copy lynda course page URL and past when asked. It will fetch URL's and start the download automatically. Open your terminal window to finish the download.
 
 ### Enjoy !!!
--
+
 # 2.Lynda File Rename
 
 Usually, Lynda files are named with the format `lesson name -fileorder.mp4` but directory listing shows the files in alphabetical order which is kind of annoying. So I've written a small bash script which will rename files by prepending the file order number at the beginning of the file so I could easily click the file or my player can autoplay files at ease.
