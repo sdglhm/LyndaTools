@@ -1,3 +1,10 @@
+# This appears to be no longer working due to changes with Lynda
+
+
+
+
+
+
 # LyndaTools
 Few bash scripts to help Lynda users to Download and Manage Lynda contents
 
